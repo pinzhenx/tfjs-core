@@ -169,6 +169,10 @@ export class MathBackendCPU implements KernelBackend {
     return this.data.get(dataId).values;
   }
 
+  getTexture(dataId: DataId): WebGLTexture {
+    throw new Error(`Not support in CPU backend`);
+  }
+
   disposeData(dataId: DataId): void {
     if (this.data.has(dataId)) {
       const {complexTensors} = this.data.get(dataId);

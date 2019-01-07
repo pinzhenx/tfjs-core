@@ -585,6 +585,11 @@ export class Engine implements TensorManager, DataMover {
     const info = this.tensorInfo.get(dataId);
     return info.backend.read(dataId);
   }
+  getTexture(dataId: DataId): WebGLTexture {
+    // Route the read to the correct backend.
+    const info = this.tensorInfo.get(dataId);
+    return info.backend.getTexture(dataId);
+  }
   fromPixels(
       pixels: ImageData|HTMLImageElement|HTMLCanvasElement|HTMLVideoElement,
       numChannels: number): Tensor3D {

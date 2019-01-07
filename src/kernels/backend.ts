@@ -93,6 +93,9 @@ export class KernelBackend implements TensorStorage, BackendTimer {
   readSync(dataId: object): DataValues {
     throw new Error('Not yet implemented.');
   }
+  getTexture(dataId: object): WebGLTexture {
+    throw new Error('Not yet implemented.');
+  }
   disposeData(dataId: object): void {
     throw new Error('Not yet implemented.');
   }

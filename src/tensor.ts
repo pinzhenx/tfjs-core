@@ -144,6 +144,7 @@ export interface TensorTracker {
   write(dataId: DataId, values: DataValues): void;
   read(dataId: DataId): Promise<DataValues>;
   readSync(dataId: DataId): DataValues;
+  getTexture(dataId: DataId): WebGLTexture;
   registerVariable(v: Variable): void;
   nextTensorId(): number;
   nextVariableId(): number;
@@ -576,6 +577,11 @@ export class Tensor<R extends Rank = Rank> {
   dataSync<D extends DataType = NumericDataType>(): DataTypeMap[D] {
     this.throwIfDisposed();
     return trackerFn().readSync(this.dataId);
+  }
+
+  getTexture(): WebGLTexture {
+    this.throwIfDisposed();
+    return trackerFn().getTexture(this.dataId);
   }
 
   /**
